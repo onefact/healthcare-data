@@ -1,5 +1,7 @@
 # Synthetic Healthcare Data
 
+## README from Observable Framework default documentation
+
 This is an [Observable Framework](https://observablehq.com/framework) project. To start the local preview server, run:
 
 ```
@@ -51,3 +53,39 @@ A typical Framework project looks like this:
 | `yarn deploy`     | Deploy your project to Observable                        |
 | `yarn clean`      | Clear the local data loader cache                        |
 | `yarn observable` | Run commands like `observable help`                      |
+
+
+## README for Data Build Tool (dbt)
+
+[On a new computer]
+Clone the repo, then run:
+Set up environment:
+```bash
+python3 -m venv .venv 
+```
+
+Activate the environment:
+```bash
+source .venv/bin/activate
+```
+
+Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+[Only need to do this once] 
+Install pip-tools:
+```bash
+pip install pip-tools
+```
+
+Compile dependencies:
+```bash
+pip-compile 
+```
+
+Initializing a dbt project:
+```bash
+dbt init healthcare_data
+```
