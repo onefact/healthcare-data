@@ -11,3 +11,4 @@ ipykernel
 jupysql
 pip-tools
 duckdb-engine
+pdfplumber

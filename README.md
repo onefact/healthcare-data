@@ -74,7 +74,8 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-[Only need to do this once] 
+## Updating the environment
+
 Install pip-tools:
 ```bash
 pip install pip-tools
@@ -88,4 +89,32 @@ pip-compile
 Initializing a dbt project:
 ```bash
 dbt init healthcare_data
+```
+
+## Building the datasets
+
+1. Generate the synthetic healthcare data schemas using the data dictionary:
+
+```bash
+cd healthcare_data
+python scripts/generate_syh_dr_data_models.py ~/data/syh_dr https://www.ahrq.gov/sites/default/files/wysiwyg/data/SyH-DR-Codebook.pdf
+```
+
+2. Generate the synthetic healthcare data (takes ~5 minutes):
+
+```bash
+dbt run
+```
+
+3. Verify that you can query the data on the command line:
+
+```bash
+
+
+## To build a specific data model:
+
+Use `--select` in dbt:
+
+```bash
+syhdr_medicare_outpatient_2016
 ```

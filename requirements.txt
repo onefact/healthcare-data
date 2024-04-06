@@ -31,13 +31,17 @@ build==1.2.1
 certifi==2024.2.2
     # via requests
 cffi==1.16.0
-    # via dbt-core
+    # via
+    #   cryptography
+    #   dbt-core
 chardet==5.2.0
     # via
     #   diff-cover
     #   sqlfluff
 charset-normalizer==3.3.2
-    # via requests
+    # via
+    #   pdfminer-six
+    #   requests
 click==8.1.7
     # via
     #   dbt-core
@@ -52,6 +56,8 @@ comm==0.2.2
     # via ipykernel
 contourpy==1.2.1
     # via matplotlib
+cryptography==42.0.5
+    # via pdfminer-six
 cycler==0.12.1
     # via matplotlib
 dbt-core==1.7.11
@@ -178,10 +184,16 @@ pathspec==0.11.2
     # via
     #   dbt-core
     #   sqlfluff
+pdfminer-six==20231228
+    # via pdfplumber
+pdfplumber==0.11.0
+    # via -r requirements.in
 pexpect==4.9.0
     # via ipython
 pillow==10.3.0
-    # via matplotlib
+    # via
+    #   matplotlib
+    #   pdfplumber
 pip-tools==7.4.1
     # via -r requirements.in
 platformdirs==4.2.0
@@ -225,6 +237,8 @@ pygments==2.17.2
     #   ipython
 pyparsing==3.1.2
     # via matplotlib
+pypdfium2==4.28.0
+    # via pdfplumber
 pyproject-hooks==1.0.0
     # via
     #   build
