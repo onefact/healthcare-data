@@ -2,14 +2,14 @@
 {{ config(materialized='external', location=var('output_path') + '/' + this.name + '.parquet') }}
 
 SELECT
-    PERSON_ID::VARCHAR,
-    PERSON_WGHT::VARCHAR,
-    PHMCY_CLM_NUM::VARCHAR,
-    CLM_CNTL_NUM::VARCHAR,
+    PERSON_ID::UBIGINT,
+    PERSON_WGHT::NUMERIC,
+    PHMCY_CLM_NUM::NUMERIC,
+    CLM_CNTL_NUM::NUMERIC,
     LINE_NBR::VARCHAR,
-    FILL_DT::VARCHAR,
+    FILL_DT::DATE,
     SYNTHETIC_DRUG_ID::VARCHAR,
     GENERIC_DRUG_NAME::VARCHAR,
-    PLAN_PMT_AMT::VARCHAR,
-    TOT_CHRG_AMT::VARCHAR
+    replace(replace(PLAN_PMT_AMT, '$', ''), ',', '')::FLOAT,
+    replace(replace(TOT_CHRG_AMT, '$', ''), ',', '')::FLOAT
 FROM read_csv('/Users/me/data/syh_dr/syhdr_commercial_pharmacy_2016.CSV', header=True, null_padding=true)

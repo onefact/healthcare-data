@@ -100,10 +100,10 @@ cd healthcare_data
 python scripts/generate_syh_dr_data_models.py ~/data/syh_dr https://www.ahrq.gov/sites/default/files/wysiwyg/data/SyH-DR-Codebook.pdf
 ```
 
-2. Generate the synthetic healthcare data (takes ~5 minutes):
+2. Generate the synthetic healthcare data (takes ~2.5 minutes, with 8 threads on a Macbook):
 
 ```bash
-dbt run
+dbt run --threads 8
 ```
 
 3. Verify that you can query the data on the command line:
@@ -111,10 +111,18 @@ dbt run
 ```bash
 
 
-## To build a specific data model:
+## To build a specific data model
 
 Use `--select` in dbt:
 
 ```bash
-syhdr_medicare_outpatient_2016
+dbt run --select "syhdr_medicare_outpatient_2016"
+```
+
+## To build a specific figure for visualization with Observable Framework
+
+Use `--select` in dbt to select models, e.g. in order to build all histograms:
+
+```bash
+dbt run --select "*histogram*"
 ```
