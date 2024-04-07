@@ -109,7 +109,21 @@ dbt run --threads 8
 3. Verify that you can query the data on the command line:
 
 ```bash
+duckdb -c "SELECT * FROM '/Users/me/data/syh_dr/syhdr_commercial_inpatient_2016.parquet'"
+```
 
+This should show the data:
+
+```
+┌──────────────────────┬──────────────────────┬───┬──────────────────────┬──────────────────────┬──────────────────────┐
+│ CAST(PERSON_ID AS …  │ CAST(PERSON_WGHT A…  │ … │ CAST(CPT_PRCDR_CD_…  │ CAST(replace(repla…  │ CAST(replace(repla…  │
+│        uint64        │    decimal(18,3)     │   │       varchar        │        float         │        float         │
+├──────────────────────┼──────────────────────┼───┼──────────────────────┼──────────────────────┼──────────────────────┤
+...
+├──────────────────────┴──────────────────────┴───┴──────────────────────┴──────────────────────┴──────────────────────┤
+│ 386816 rows (40 shown)                                                                         101 columns (5 shown) │
+└──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+```
 
 ## To build a specific data model
 
@@ -126,3 +140,26 @@ Use `--select` in dbt to select models, e.g. in order to build all histograms:
 ```bash
 dbt run --select "*histogram*"
 ```
+
+Check the total payment amount:
+
+```bash
+❯ duckdb -c "SELECT SUM(Payment * Count) FROM '/Users/me/data/syh_dr/insurance_plan_payment_histogram.parquet'"
+┌────────────────────────┐
+│ sum((Payment * Count)) │
+│         double         │
+├────────────────────────┤
+│       8570849798.39355 │
+└────────────────────────┘
+```
+
+# Contributors
+
+@wesleycheung0, @jaanli, @sumanthkaja (reach out if you also want to volunteer on this and have worked with dbt, duckdb, healthcare data, or Observable Framework! We will be working with large language models next)
+
+# Copyright
+(c) 2024 All Bets LLC, a wholly-owned subsidiary of One Fact Foundation (a 501(c)(3) nonprofit). This legal structure is required by the United States' Internal Revenue Service to allow non-profit organizations to engage in the creation of open source software, which outside of non-profits is typically done by for-profit companies and requires significant taxation.
+
+# Contact
+
+File an issue here or email `hello@onefact.org`. 

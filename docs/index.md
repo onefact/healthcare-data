@@ -45,51 +45,73 @@ toc: false
 </style>
 
 <div class="hero">
-  <h1>Hello, Observable Framework</h1>
-  <h2>Welcome to your new project! Edit&nbsp;<code style="font-size: 90%;">docs/index.md</code> to change this page.</h2>
-  <a href="https://observablehq.com/framework/getting-started">Get started<span style="display: inline-block; margin-left: 0.25rem;">↗︎</span></a>
+  <h1>Synthetic Healthcare Data</h1>
+  <h2>Welcome to nonprofit research into healthcare thanks to the Agency for Healthcare Research and Quality in the United States' Department of Health and Human Services!</h2>
+  <a href="https://www.ahrq.gov/sites/default/files/wysiwyg/data/SyH-DR-Codebook.pdf">Learn more about variables in the data<span style="display: inline-block; margin-left: 0.25rem;">↗︎</span></a>
 </div>
 
-<div class="grid grid-cols-2" style="grid-auto-rows: 504px;">
-  <div class="card">${
-    resize((width) => Plot.plot({
-      title: "Your awesomeness over time 🚀",
-      subtitle: "Up and to the right!",
-      width,
-      y: {grid: true, label: "Awesomeness"},
-      marks: [
-        Plot.ruleY([0]),
-        Plot.lineY(aapl, {x: "Date", y: "Close", tip: true})
-      ]
-    }))
-  }</div>
-  <div class="card">${
-    resize((width) => Plot.plot({
-      title: "How big are penguins, anyway? 🐧",
-      width,
-      grid: true,
-      x: {label: "Body mass (g)"},
-      y: {label: "Flipper length (mm)"},
-      color: {legend: true},
-      marks: [
-        Plot.linearRegressionY(penguins, {x: "body_mass_g", y: "flipper_length_mm", stroke: "species"}),
-        Plot.dot(penguins, {x: "body_mass_g", y: "flipper_length_mm", stroke: "species", tip: true})
-      ]
-    }))
-  }</div>
-</div>
+
+---
 
 ```js
-const aapl = FileAttachment("aapl.csv").csv({typed: true});
-const penguins = FileAttachment("penguins.csv").csv({typed: true});
+import {DuckDBClient} from "npm:@observablehq/duckdb";
+const db = DuckDBClient.of({data: FileAttachment("data/insurance_plan_payment_histogram.parquet")});
 ```
+
+
+```js
+const orderInsurance = [
+  'Commercial',
+  'Medicaid',
+  'Medicare',
+];
+```
+
+```js
+const paymentData = await db.query(`
+  SELECT Payment, count, Insurance FROM data
+`);
+```
+
+```js
+function paymentChart(paymentData, width) {
+  // Create a histogram with a logarithmic base.
+  return Plot.plot({
+    width,
+    marginLeft: 60,
+    x: { type: "log", domain: [1, 1000000] }, // Set the domain of the x-axis to be fixed between 1 and 1,000,000
+    y: { axis: null }, // Hide the y-axis
+    color: { legend: "swatches", columns: 1, domain: orderInsurance },
+    marks: [
+      Plot.rectY(
+        paymentData,
+        Plot.binX(
+          { y: "sum" },
+          {
+            x: "Payment",
+            y: "count",
+            fill: "Insurance",
+            order: orderInsurance,
+            thresholds: d3
+              .ticks(Math.log10(1), Math.log10(1000000), 40)
+              .map((d) => +(10 ** d).toPrecision(3)),
+            tip: true,
+          }
+        )
+      ),
+    ],
+  });
+}
+```
+
+<div class="card"> <h2>Payment distributions vary by insurance type</h2> <h3>The amount paid for the inpatient health care costs of 1.2 million people in 2016 representing $8.5 billion in health care costs. This dataset is created by the Agency for Healthcare Research and Quality and includes synthetic patient data categorized by insurance type.</h3> <h3> <code style="font-size: 90%;"><a href="https://github.com/onefact/synthetic-healthcare-data/blob/6dc81b75277f349d112bccc0a8db61d9b2240c4e/healthcare_data/models/figures/insurance_plan_payment_histogram.sql">Code for data transform</a></code></h3> ${resize((width) => paymentChart(paymentData, width))} </div>
 
 ---
 
 ## Next steps
 
-Here are some ideas of things you could try…
-
+We need ideas! Take a look at the source code at https://github.com/onefact/synthetic-healthcare-data and e mail us at hello@onefact.org if you want to volunteer on this. We will be looking at large language models and algorithmic fairness metrics in health care settings next. 
+<!-- 
 <div class="grid grid-cols-4">
   <div class="card">
     Chart your own data using <a href="https://observablehq.com/framework/lib/plot"><code>Plot</code></a> and <a href="https://observablehq.com/framework/javascript/files"><code>FileAttachment</code></a>. Make it responsive using <a href="https://observablehq.com/framework/javascript/display#responsive-display"><code>resize</code></a>.
@@ -112,4 +134,4 @@ Here are some ideas of things you could try…
   <div class="card">
     Visit <a href="https://github.com/observablehq/framework">Framework on GitHub</a> and give us a star. Or file an issue if you’ve found a bug!
   </div>
-</div>
+</div> -->

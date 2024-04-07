@@ -121,10 +121,10 @@ def process_csv_files(pdf_url, csv_folder):
                     if "AMT" in column_name:
                         # remove dollar sign from the VARCHAR string
                         column_list.append(
-                            f"replace(replace({column_name}, '$', ''), ',', '')::{data_type}"
+                            f"replace(replace({column_name}, '$', ''), ',', '')::{data_type} AS {column_name}"
                         )
                     else:
-                        column_list.append(f"{column_name}::{data_type}")
+                        column_list.append(f"{column_name}::{data_type} AS {column_name}")
                 else:
                     column_list.append(f"{column_name}::VARCHAR")
 
