@@ -79,7 +79,7 @@ function paymentChart(paymentData, width) {
   return Plot.plot({
     width,
     marginLeft: 60,
-    x: { type: "log", domain: [1, 1000000] }, // Set the domain of the x-axis to be fixed between 1 and 1,000,000
+    x: { type: "log", domain: [100, 300_000] }, // Set the domain of the x-axis to be fixed between 1 and 1,000,000
     y: { axis: null }, // Hide the y-axis
     color: { legend: "swatches", columns: 1, domain: orderInsurance },
     marks: [
@@ -93,9 +93,9 @@ function paymentChart(paymentData, width) {
             fill: "Insurance",
             order: orderInsurance,
             thresholds: d3
-              .ticks(Math.log10(1), Math.log10(1000000), 40)
-              .map((d) => +(10 ** d).toPrecision(3)),
-            tip: true,
+              .ticks(Math.log10(1), Math.log10(1000000), 90)
+              .map((d) => 10 ** d),
+            tip: { format: { x: ",.3r" } }
           }
         )
       ),

@@ -12,3 +12,5 @@ jupysql
 pip-tools
 duckdb-engine
 pdfplumber
+openpyxl
+pip-tools

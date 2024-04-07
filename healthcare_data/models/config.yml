@@ -1,7 +1,0 @@
-version: 2
-
-models:
-- name: healthcare_data
-  config:
-    public_use_microdata_sample_url: "{{ var('data_path') }}"
-    output_path: "{{ var('output_path') }}"

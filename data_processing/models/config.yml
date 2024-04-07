@@ -1,0 +1,11 @@
+version: 2
+
+models:
+- name: download_consumer_price_index
+  config:
+    data_path: "{{ var('data_path') }}"
+    output_path: "{{ var('output_path') }}"
+- name: ahrq.gov
+  config:
+    data_path: "{{ var('data_path') }}"
+    output_path: "{{ var('output_path') }}"
