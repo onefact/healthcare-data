@@ -104,7 +104,7 @@ function paymentChart(paymentData, width) {
 }
 ```
 
-<div class="card"> <h2>Payment distributions vary by insurance type</h2> <h3>The amount paid per claim for the inpatient health care costs of 1.2 million people in 2016 representing $8.5 billion in health care costs. This dataset is created by the Agency for Healthcare Research and Quality and includes synthetic patient data categorized by insurance type.</h3> <h3> <code style="font-size: 90%;"><a href="https://github.com/onefact/synthetic-healthcare-data/blob/6dc81b75277f349d112bccc0a8db61d9b2240c4e/healthcare_data/models/figures/insurance_plan_payment_histogram.sql">Code for data transform</a></code></h3> ${resize((width) => paymentChart(paymentData, width))} </div>
+<div class="card"> <h2>Payment distributions vary by insurance type</h2> <h3>The amount paid per claim for the inpatient health care costs of 1.2 million people in 2016 representing $8.6 billion in health care costs (in 2022 dollars). This dataset is created by the Agency for Healthcare Research and Quality and includes synthetic patient data categorized by insurance type.</h3> <h3> <code style="font-size: 90%;"><a href="https://github.com/onefact/synthetic-healthcare-data/blob/6dc81b75277f349d112bccc0a8db61d9b2240c4e/healthcare_data/models/figures/insurance_plan_payment_histogram.sql">Code for data transform</a></code></h3> ${resize((width) => paymentChart(paymentData, width))} </div>
 
 ---
 
