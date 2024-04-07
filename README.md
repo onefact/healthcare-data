@@ -155,7 +155,7 @@ Check the total payment amount:
 
 # Contributors
 
-@wesleycheung0, @jaanli, @sumanthkaja (reach out if you also want to volunteer on this and have worked with dbt, duckdb, healthcare data, or Observable Framework! We will be working with large language models next)
+[@wesleycheung0](https://github.com/wesleycheung0), [@sumanthkaja](https://github.com/sumanthkaja), [@jaanli](https://github.com/jaanli) (reach out if you also want to volunteer on this and have worked with dbt, duckdb, healthcare data, or Observable Framework! We will be working with large language models next)
 
 # Copyright
 (c) 2024 All Bets LLC, a wholly-owned subsidiary of One Fact Foundation (a 501(c)(3) nonprofit). This legal structure is required by the United States' Internal Revenue Service to allow non-profit organizations to engage in the creation of open source software, which outside of non-profits is typically done by for-profit companies and requires significant taxation.
