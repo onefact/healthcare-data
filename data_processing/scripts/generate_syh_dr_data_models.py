@@ -106,7 +106,7 @@ def process_csv_files(pdf_url, csv_folder):
 
         # Generate the SQL model
         sql_file = os.path.splitext(csv_file)[0] + ".sql"
-        with open(os.path.join("models/generated/with_types", sql_file), "w") as f:
+        with open(os.path.join("models/ahrq.gov/generated/with_types", sql_file), "w") as f:
             # Write the SQL model header
             f.write(f"-- SQL model for {csv_file}\n")
             f.write(
@@ -124,7 +124,9 @@ def process_csv_files(pdf_url, csv_folder):
                             f"replace(replace({column_name}, '$', ''), ',', '')::{data_type} AS {column_name}"
                         )
                     else:
-                        column_list.append(f"{column_name}::{data_type} AS {column_name}")
+                        column_list.append(
+                            f"{column_name}::{data_type} AS {column_name}"
+                        )
                 else:
                     column_list.append(f"{column_name}::VARCHAR")
 
@@ -133,7 +135,9 @@ def process_csv_files(pdf_url, csv_folder):
                 close_bracket = "}"
                 csv_str = f", types={open_bracket}{csv_types}{close_bracket}, ignore_errors=true"
                 print(csv_str)
-            select_statement = f"SELECT\n    {',\n    '.join(column_list)}\nFROM read_csv('{csv_path}', header=True, null_padding=true{csv_str if csv_types else ''})"
+            username = os.environ.get("USER")
+            path_without_user = "~/" + csv_path.split(username + '/')[1]
+            select_statement = f"SELECT\n    {',\n    '.join(column_list)}\nFROM read_csv('{path_without_user}', header=True, null_padding=true{csv_str if csv_types else ''})"
             f.write(select_statement)
 
         print(f"Generated SQL model: {sql_file}")
