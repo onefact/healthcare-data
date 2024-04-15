@@ -52,4 +52,4 @@ SELECT
     DUAL_ELGBL_10::VARCHAR,
     DUAL_ELGBL_11::VARCHAR,
     DUAL_ELGBL_12::NUMERIC AS DUAL_ELGBL_12
-FROM read_csv('/Users/me/data/syh_dr/syhdr_medicaid_person_2016.CSV', header=True, null_padding=true)
+FROM read_csv('~/data/syh_dr/syhdr_medicaid_person_2016.CSV', header=True, null_padding=true)

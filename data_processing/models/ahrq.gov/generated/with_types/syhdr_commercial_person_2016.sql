@@ -34,4 +34,4 @@ SELECT
     CMRCL_INSRC_10::VARCHAR,
     CMRCL_INSRC_11::VARCHAR,
     CMRCL_INSRC_12::NUMERIC AS CMRCL_INSRC_12
-FROM read_csv('/Users/me/data/syh_dr/syhdr_commercial_person_2016.CSV', header=True, null_padding=true)
+FROM read_csv('~/data/syh_dr/syhdr_commercial_person_2016.CSV', header=True, null_padding=true)

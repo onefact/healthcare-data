@@ -12,4 +12,4 @@ SELECT
     GENERIC_DRUG_NAME::VARCHAR AS GENERIC_DRUG_NAME,
     replace(replace(PLAN_PMT_AMT, '$', ''), ',', '')::FLOAT AS PLAN_PMT_AMT,
     replace(replace(TOT_CHRG_AMT, '$', ''), ',', '')::FLOAT AS TOT_CHRG_AMT
-FROM read_csv('/Users/me/data/syh_dr/syhdr_medicaid_pharmacy_2016.CSV', header=True, null_padding=true)
+FROM read_csv('~/data/syh_dr/syhdr_medicaid_pharmacy_2016.CSV', header=True, null_padding=true)
