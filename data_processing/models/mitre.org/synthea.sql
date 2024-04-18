@@ -5,7 +5,7 @@ WITH patient_data AS (
           json_extract_string(resource, '$.id') AS patient_id,
           json_transform(json_extract(resource, '$.identifier'), '[{"type":{"text":"VARCHAR"},"value":"VARCHAR"}]') AS identifiers,
           json_transform(json_extract(resource, '$.extension'), '[{"url":"VARCHAR","extension":[{"valueCoding":{"display":"VARCHAR"}}]}]') AS extensions,
-          json_transform(json_extract(resource, '$.address'), '[{"line":{"line":"VARCHAR"},"city":"VARCHAR","state":"VARCHAR","postalCode":"VARCHAR","country":"VARCHAR"}]') AS addresses,
+          json_transform(json_extract(resource, '$.address'), '[{"city":"VARCHAR","state":"VARCHAR","postalCode":"VARCHAR","country":"VARCHAR","line":["VARCHAR"]}]') AS addresses,
           json_extract_string(resource, '$.name[0].given[0]') AS first_name,
           json_extract_string(resource, '$.name[0].family') AS last_name,
           json_extract_string(resource, '$.name[0].given[1]') AS first_name_alt,
@@ -75,7 +75,7 @@ WITH patient_data AS (
          i.patient_ssn,
          e.patient_core_race,
          e.patient_core_ethnicity,
-         a.address.line,
+         a.address.line[1],
          a.address.city,
          a.address.state,
          a.address.postalCode,
@@ -87,4 +87,3 @@ WITH patient_data AS (
 )
 
 select * from combined_data
-
