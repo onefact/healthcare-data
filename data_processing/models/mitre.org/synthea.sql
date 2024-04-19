@@ -87,3 +87,4 @@ WITH patient_data AS (
 )
 
 select * from combined_data
+
