@@ -137,7 +137,9 @@ def process_csv_files(pdf_url, csv_folder):
                 print(csv_str)
             username = os.environ.get("USER")
             path_without_user = "~/" + csv_path.split(username + '/')[1]
-            select_statement = f"SELECT\n    {',\n    '.join(column_list)}\nFROM read_csv('{path_without_user}', header=True, null_padding=true{csv_str if csv_types else ''})"
+            select_statement = f"""SELECT
+    {',\n    '.join(column_list)}
+FROM read_csv('{path_without_user}', header=True, null_padding=true{csv_str if csv_types else ''})"""
             f.write(select_statement)
 
         print(f"Generated SQL model: {sql_file}")

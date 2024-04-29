@@ -88,7 +88,7 @@ pip-compile
 
 Initializing a dbt project:
 ```bash
-dbt init healthcare_data
+dbt init data_processing
 ```
 
 ## Building the datasets
@@ -96,7 +96,7 @@ dbt init healthcare_data
 1. Generate the synthetic healthcare data schemas using the data dictionary:
 
 ```bash
-cd healthcare_data
+cd data_processing
 python scripts/generate_syh_dr_data_models.py ~/data/syh_dr https://www.ahrq.gov/sites/default/files/wysiwyg/data/SyH-DR-Codebook.pdf
 ```
 
@@ -109,7 +109,7 @@ dbt run --threads 8
 3. Verify that you can query the data on the command line:
 
 ```bash
-duckdb -c "SELECT * FROM '/Users/me/data/syh_dr/syhdr_commercial_inpatient_2016.parquet'"
+duckdb -c "SELECT * FROM '~/data/syh_dr/syhdr_commercial_inpatient_2016.parquet'"
 ```
 
 This should show the data:
