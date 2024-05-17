@@ -105,7 +105,8 @@ def process_csv_files(data_dictionary_df, csv_folder):
             for column_name in column_names:
                 if column_name in column_definitions:
                     data_type = column_definitions[column_name]
-                    types_list.append(f"'{column_name}': '{data_type}'")
+                    if data_type != "FLOAT":
+                        types_list.append(f"'{column_name}': '{data_type}'")
                     if "AMT" in column_name:
                         # remove dollar sign from the VARCHAR string
                         column_list.append(
