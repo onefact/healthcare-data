@@ -127,6 +127,7 @@ def process_csv_files(data_dictionary_df, csv_folder):
                 "SELECT\n    " + ",\n    ".join(column_list) + "\n" +
                 f"FROM read_csv('{path_without_user}', header=True, null_padding=true, types={{ {types_str} }}, ignore_errors=true)"
             )
+
             f.write(select_statement)
 
         print(f"Generated SQL model: {sql_file_path}")

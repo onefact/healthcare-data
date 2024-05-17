@@ -7,3 +7,4 @@ SELECT
     Prvdr_Ownrshp_Cd::VARCHAR AS Prvdr_Ownrshp_Cd,
     Prvdr_Prtcptn_Cd::VARCHAR AS Prvdr_Prtcptn_Cd
 FROM read_csv('~/data/syh_dr/syhdr_medicaid_provider_2016.CSV', header=True, null_padding=true, types={ 'Facility_ID': 'VARCHAR', 'Prvdr_Ctgry_Cd': 'VARCHAR', 'Prvdr_Ownrshp_Cd': 'VARCHAR', 'Prvdr_Prtcptn_Cd': 'VARCHAR' }, ignore_errors=true)
+

@@ -9,3 +9,7 @@ models:
   config:
     data_path: "{{ var('data_path') }}"
     output_path: "{{ var('output_path') }}"
+- name: mitre.org
+  config:
+    data_path: "{{ var('data_path') }}"
+    output_path: "{{ var('output_path') }}"

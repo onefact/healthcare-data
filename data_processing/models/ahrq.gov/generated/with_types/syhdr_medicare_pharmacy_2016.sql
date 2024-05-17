@@ -13,3 +13,4 @@ SELECT
     replace(replace(PLAN_PMT_AMT, '$', ''), ',', '')::FLOAT AS PLAN_PMT_AMT,
     replace(replace(TOT_CHRG_AMT, '$', ''), ',', '')::FLOAT AS TOT_CHRG_AMT
 FROM read_csv('~/data/syh_dr/syhdr_medicare_pharmacy_2016.CSV', header=True, null_padding=true, types={ 'PERSON_ID': 'UBIGINT', 'PERSON_WGHT': 'NUMERIC', 'PHMCY_CLM_NUM': 'NUMERIC', 'CLM_CNTL_NUM': 'NUMERIC', 'LINE_NBR': 'VARCHAR', 'FILL_DT': 'DATE', 'SYNTHETIC_DRUG_ID': 'VARCHAR', 'GENERIC_DRUG_NAME': 'VARCHAR' }, ignore_errors=true)
+
