@@ -8,7 +8,7 @@ sources:
         description: Inpatient files from AHRQ.
         meta:
           external_location: >
-            read_csv('data/syh_dr/syhdr_*_inpatient_2016.csv',
+            read_csv('../data/syh_dr/syhdr_*_inpatient_2016.csv',
             types = {
               PERSON_ID: 'UBIGINT',
               PERSON_WGHT: 'NUMERIC',
@@ -117,7 +117,7 @@ sources:
         description: Outpatient files from AHRQ.
         meta:
           external_location: >
-            read_csv('data/syh_dr/syhdr_*_outpatient_2016.csv',
+            read_csv('../data/syh_dr/syhdr_*_outpatient_2016.csv',
             types = {
               PERSON_ID: 'UBIGINT',
               PERSON_WGHT: 'NUMERIC',
@@ -226,7 +226,7 @@ sources:
         description: Person-Level files from AHRQ.
         meta:
           external_location: >
-            read_csv('data/syh_dr/syhdr_*_person_2016.csv',
+            read_csv('../data/syh_dr/syhdr_*_person_2016.csv',
             types = {
               PERSON_ID: 'UBIGINT',
               MCAID_BENE_ID: 'UBIGINT',
@@ -284,7 +284,7 @@ sources:
         descripton: Pharmacy files from AHRQ.
         meta:
           external_location: >
-            read_csv('data/syh_dr/syhdr_*_pharmacy_2016.csv',
+            read_csv('../data/syh_dr/syhdr_*_pharmacy_2016.csv',
             types = {
               PERSON_ID: 'UBIGINT',
               PERSON_WGHT: 'NUMERIC',
@@ -302,7 +302,7 @@ sources:
         description: Provider files from AHRQ.
         meta:
           external_location: >
-            read_csv('data/syh_dr/syhdr_*_provider_2016.csv',
+            read_csv('../data/syh_dr/syhdr_*_provider_2016.csv',
             types = {
               Facility_ID: 'VARCHAR',
               Prvdr_Ctgry_Cd: 'VARCHAR',
@@ -316,14 +316,14 @@ sources:
     tables:
       - name: consumer_price_index
         meta:
-          external_location: ./data/r-cpi-u-rs-allitems.xlsx
+          external_location: ../data/r-cpi-u-rs-allitems.xlsx
           sheet_nane: 'All items'
   - name: mitre_org
     tables:
       - name: synthea
         meta:
           external_location: >
-            read_json('./data/Gudrun69_Shaunna800_Goyette777_d5e33bd1-960e-bcf4-e5f9-9a4afc6d5a5e.json',
+            read_json('../data/Gudrun69_Shaunna800_Goyette777_d5e33bd1-960e-bcf4-e5f9-9a4afc6d5a5e.json',
             columns = {
               entry: 'JSON[]'
             })
