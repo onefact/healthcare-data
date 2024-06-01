@@ -18,23 +18,35 @@ def create_data_dictionary():
     AHRQ_BASE_URL = 'https://www.ahrq.gov'
     SYH_DR_URL = 'https://www.ahrq.gov/data/innovations/syh-dr.html'
 
-    # Get all links to Data Dictionary CSV files
+    # Get the link to the Data Dictionary XLSX file
     response = requests.get(SYH_DR_URL)
     soup = BeautifulSoup(response.text, 'html.parser')
 
-    # Create list of data dictionary URLs (i.e., where attribute is like "Variables")
-    data_dictionary_urls = []
-    for url in soup.find_all("a", string=re.compile("Variables")):
-        csv_url = AHRQ_BASE_URL + url.attrs.get("href")
-        data_dictionary_urls.append(csv_url)
+    # Extract the URL of the data dictionary XLSX file
+    xlsx_url = None
+    for a_tag in soup.find_all("a", href=True):
+        if re.search(r"\.xlsx$", a_tag['href']):
+            xlsx_url = AHRQ_BASE_URL + a_tag['href']
+            break
 
-    # Concat all data dictionaries into a dataframe and write to a file
+    if not xlsx_url:
+        raise Exception("Data Dictionary XLSX file URL not found.")
+
+    # Read the specified worksheets into dataframes
     ssl._create_default_https_context = ssl._create_unverified_context
-    data_dictionary_df = pd.concat((pd.read_csv(url) for url in data_dictionary_urls), ignore_index=True)
-    data_dictionary_df = data_dictionary_df[data_dictionary_df["Variable Name"].notnull()]
-    data_dictionary_df.to_csv("./data_processing/seeds/SyH-DR_data_dictionary.csv", index=False)
+    xls = pd.ExcelFile(xlsx_url)
+    
+    # Specify the worksheets to concatenate
+    worktabs_to_concat = ["Person-Level Variables", "Claims-Level Variables", "Pharmacy Variables"]
+    dfs = [xls.parse(sheet_name) for sheet_name in worktabs_to_concat]
 
-    return data_dictionary_df[["Variable Label", "Variable Name", "Variable Type", "Variable Format", "Variable Length"]]
+    # Concatenate the dataframes
+    data_dictionary_df = pd.concat(dfs, ignore_index=True)
+
+    # Save the concatenated dataframe to an xlsx file
+    data_dictionary_df.to_excel("./data_processing/seeds/SyH-DR_data_dictionary_combined.xlsx", index=False)
+
+    return data_dictionary_df
 
 def map_variable_type_to_sql(variable_name, variable_type, variable_length, variable_format):
     if "_ID" in variable_name:
