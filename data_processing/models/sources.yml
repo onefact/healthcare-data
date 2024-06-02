@@ -1,0 +1,505 @@
+version: 2
+
+sources:
+  - name: syh_dr
+    description: Synthetic Healthcare data from AHRQ
+    tables:
+      - name: inpatient
+        description: Inpatient files from AHRQ.
+        meta:
+          external_location: >
+            read_csv('../data/syh_dr/syhdr_*_inpatient_2016.csv',
+            types = {
+              PERSON_ID: 'UBIGINT',
+              PERSON_WGHT: 'NUMERIC',
+              FACILITY_ID: 'UBIGINT',
+              CLM_CNTL_NUM: 'NUMERIC',
+              AT_SPCLTY: 'VARCHAR',
+              SRVC_BEG_DATE: 'DATE',
+              SRVC_END_DATE: 'DATE',
+              LOS: 'UINTEGER',
+              ADMSN_TYPE: 'VARCHAR',
+              TOB_CD: 'VARCHAR',
+              CLM_TYPE_CD: 'VARCHAR',
+              DSCHRG_STUS: 'VARCHAR',
+              PRMRY_DX_IMPUTED: 'VARCHAR',
+              PRMRY_DX_CD: 'VARCHAR',
+              ICD_DX_CD_1: 'VARCHAR',
+              ICD_DX_CD_2: 'VARCHAR',
+              ICD_DX_CD_3: 'VARCHAR',
+              ICD_DX_CD_4: 'VARCHAR',
+              ICD_DX_CD_5: 'VARCHAR',
+              ICD_DX_CD_6: 'VARCHAR',
+              ICD_DX_CD_7: 'VARCHAR',
+              ICD_DX_CD_8: 'VARCHAR',
+              ICD_DX_CD_9: 'VARCHAR',
+              ICD_DX_CD_10: 'VARCHAR',
+              ICD_DX_CD_11: 'VARCHAR',
+              ICD_DX_CD_12: 'VARCHAR',
+              ICD_DX_CD_13: 'VARCHAR',
+              ICD_DX_CD_14: 'VARCHAR',
+              ICD_DX_CD_15: 'VARCHAR',
+              ICD_DX_CD_16: 'VARCHAR',
+              ICD_DX_CD_17: 'VARCHAR',
+              ICD_DX_CD_18: 'VARCHAR',
+              ICD_DX_CD_19: 'VARCHAR',
+              ICD_DX_CD_20: 'VARCHAR',
+              ICD_DX_CD_21: 'VARCHAR',
+              ICD_DX_CD_22: 'VARCHAR',
+              ICD_DX_CD_23: 'VARCHAR',
+              ICD_DX_CD_24: 'VARCHAR',
+              ICD_DX_CD_25: 'VARCHAR',
+              ICD_PRCDR_CD_1: 'VARCHAR',
+              ICD_PRCDR_CD_2: 'VARCHAR',
+              ICD_PRCDR_CD_3: 'VARCHAR',
+              ICD_PRCDR_CD_4: 'VARCHAR',
+              ICD_PRCDR_CD_5: 'VARCHAR',
+              ICD_PRCDR_CD_6: 'VARCHAR',
+              ICD_PRCDR_CD_7: 'VARCHAR',
+              ICD_PRCDR_CD_8: 'VARCHAR',
+              ICD_PRCDR_CD_9: 'VARCHAR',
+              ICD_PRCDR_CD_10: 'VARCHAR',
+              ICD_PRCDR_CD_11: 'VARCHAR',
+              ICD_PRCDR_CD_12: 'VARCHAR',
+              ICD_PRCDR_CD_13: 'VARCHAR',
+              ICD_PRCDR_CD_14: 'VARCHAR',
+              ICD_PRCDR_CD_15: 'VARCHAR',
+              ICD_PRCDR_CD_16: 'VARCHAR',
+              ICD_PRCDR_CD_17: 'VARCHAR',
+              ICD_PRCDR_CD_18: 'VARCHAR',
+              ICD_PRCDR_CD_19: 'VARCHAR',
+              ICD_PRCDR_CD_20: 'VARCHAR',
+              ICD_PRCDR_CD_21: 'VARCHAR',
+              ICD_PRCDR_CD_22: 'VARCHAR',
+              ICD_PRCDR_CD_23: 'VARCHAR',
+              ICD_PRCDR_CD_24: 'VARCHAR',
+              ICD_PRCDR_CD_25: 'VARCHAR',
+              CPT_PRCDR_CD_1: 'VARCHAR',
+              CPT_PRCDR_CD_2: 'VARCHAR',
+              CPT_PRCDR_CD_3: 'VARCHAR',
+              CPT_PRCDR_CD_4: 'VARCHAR',
+              CPT_PRCDR_CD_5: 'VARCHAR',
+              CPT_PRCDR_CD_6: 'VARCHAR',
+              CPT_PRCDR_CD_7: 'VARCHAR',
+              CPT_PRCDR_CD_8: 'VARCHAR',
+              CPT_PRCDR_CD_9: 'VARCHAR',
+              CPT_PRCDR_CD_10: 'VARCHAR',
+              CPT_PRCDR_CD_11: 'VARCHAR',
+              CPT_PRCDR_CD_12: 'VARCHAR',
+              CPT_PRCDR_CD_13: 'VARCHAR',
+              CPT_PRCDR_CD_14: 'VARCHAR',
+              CPT_PRCDR_CD_15: 'VARCHAR',
+              CPT_PRCDR_CD_16: 'VARCHAR',
+              CPT_PRCDR_CD_17: 'VARCHAR',
+              CPT_PRCDR_CD_18: 'VARCHAR',
+              CPT_PRCDR_CD_19: 'VARCHAR',
+              CPT_PRCDR_CD_20: 'VARCHAR',
+              CPT_PRCDR_CD_21: 'VARCHAR',
+              CPT_PRCDR_CD_22: 'VARCHAR',
+              CPT_PRCDR_CD_23: 'VARCHAR',
+              CPT_PRCDR_CD_24: 'VARCHAR',
+              CPT_PRCDR_CD_25: 'VARCHAR',
+              CPT_PRCDR_CD_26: 'VARCHAR',
+              CPT_PRCDR_CD_27: 'VARCHAR',
+              CPT_PRCDR_CD_28: 'VARCHAR',
+              CPT_PRCDR_CD_29: 'VARCHAR',
+              CPT_PRCDR_CD_30: 'VARCHAR',
+              CPT_PRCDR_CD_31: 'VARCHAR',
+              CPT_PRCDR_CD_32: 'VARCHAR',
+              CPT_PRCDR_CD_33: 'VARCHAR',
+              CPT_PRCDR_CD_34: 'VARCHAR',
+              CPT_PRCDR_CD_35: 'VARCHAR',
+              PLAN_PMT_AMT: 'FLOAT'
+              TOT_CHRG_AMT: 'FLOAT'
+            })
+          formatter: oldstyle
+      - name: outpatient
+        description: Outpatient files from AHRQ.
+        meta:
+          external_location: >
+            read_csv('../data/syh_dr/syhdr_*_outpatient_2016.csv',
+            types = {
+              PERSON_ID: 'UBIGINT',
+              PERSON_WGHT: 'NUMERIC',
+              FACILITY_ID: 'UBIGINT',
+              CLM_CNTL_NUM: 'NUMERIC',
+              AT_SPCLTY: 'VARCHAR',
+              SRVC_BEG_DATE: 'DATE',
+              SRVC_END_DATE: 'DATE',
+              LOS: 'UINTEGER',
+              ADMSN_TYPE: 'VARCHAR',
+              TOB_CD: 'VARCHAR'',
+              CLM_TYPE_CD: 'VARCHAR',
+              DSCHRG_STUS: 'VARCHAR',
+              PRMRY_DX_IMPUTED: 'VARCHAR',
+              PRMRY_DX_CD: 'VARCHAR',
+              ICD_DX_CD_1: 'VARCHAR',
+              ICD_DX_CD_2: 'VARCHAR',
+              ICD_DX_CD_3: 'VARCHAR',
+              ICD_DX_CD_4: 'VARCHAR',
+              ICD_DX_CD_5: 'VARCHAR',
+              ICD_DX_CD_6: 'VARCHAR',
+              ICD_DX_CD_7: 'VARCHAR',
+              ICD_DX_CD_8: 'VARCHAR',
+              ICD_DX_CD_9: 'VARCHAR',
+              ICD_DX_CD_10: 'VARCHAR',
+              ICD_DX_CD_11: 'VARCHAR',
+              ICD_DX_CD_12: 'VARCHAR',
+              ICD_DX_CD_13: 'VARCHAR',
+              ICD_DX_CD_14: 'VARCHAR',
+              ICD_DX_CD_15: 'VARCHAR',
+              ICD_DX_CD_16: 'VARCHAR',
+              ICD_DX_CD_17: 'VARCHAR',
+              ICD_DX_CD_18: 'VARCHAR',
+              ICD_DX_CD_19: 'VARCHAR',
+              ICD_DX_CD_20: 'VARCHAR',
+              ICD_DX_CD_21: 'VARCHAR',
+              ICD_DX_CD_22: 'VARCHAR',
+              ICD_DX_CD_23: 'VARCHAR',
+              ICD_DX_CD_24: 'VARCHAR',
+              ICD_DX_CD_25: 'VARCHAR',
+              ICD_PRCDR_CD_1: 'VARCHAR',
+              ICD_PRCDR_CD_2: 'VARCHAR',
+              ICD_PRCDR_CD_3: 'VARCHAR',
+              ICD_PRCDR_CD_4: 'VARCHAR',
+              ICD_PRCDR_CD_5: 'VARCHAR',
+              ICD_PRCDR_CD_6: 'VARCHAR',
+              ICD_PRCDR_CD_7: 'VARCHAR',
+              ICD_PRCDR_CD_8: 'VARCHAR',
+              ICD_PRCDR_CD_9: 'VARCHAR',
+              ICD_PRCDR_CD_10: 'VARCHAR',
+              ICD_PRCDR_CD_11: 'VARCHAR',
+              ICD_PRCDR_CD_12: 'VARCHAR',
+              ICD_PRCDR_CD_13: 'VARCHAR',
+              ICD_PRCDR_CD_14: 'VARCHAR',
+              ICD_PRCDR_CD_15: 'VARCHAR',
+              ICD_PRCDR_CD_16: 'VARCHAR',
+              ICD_PRCDR_CD_17: 'VARCHAR',
+              ICD_PRCDR_CD_18: 'VARCHAR',
+              ICD_PRCDR_CD_19: 'VARCHAR',
+              ICD_PRCDR_CD_20: 'VARCHAR',
+              ICD_PRCDR_CD_21: 'VARCHAR',
+              ICD_PRCDR_CD_22: 'VARCHAR',
+              ICD_PRCDR_CD_23: 'VARCHAR',
+              ICD_PRCDR_CD_24: 'VARCHAR',
+              ICD_PRCDR_CD_25: 'VARCHAR',
+              CPT_PRCDR_CD_1: 'VARCHAR',
+              CPT_PRCDR_CD_2: 'VARCHAR',
+              CPT_PRCDR_CD_3: 'VARCHAR',
+              CPT_PRCDR_CD_4: 'VARCHAR',
+              CPT_PRCDR_CD_5: 'VARCHAR',
+              CPT_PRCDR_CD_6: 'VARCHAR',
+              CPT_PRCDR_CD_7: 'VARCHAR',
+              CPT_PRCDR_CD_8: 'VARCHAR',
+              CPT_PRCDR_CD_9: 'VARCHAR',
+              CPT_PRCDR_CD_10: 'VARCHAR',
+              CPT_PRCDR_CD_11: 'VARCHAR',
+              CPT_PRCDR_CD_12: 'VARCHAR',
+              CPT_PRCDR_CD_13: 'VARCHAR',
+              CPT_PRCDR_CD_14: 'VARCHAR',
+              CPT_PRCDR_CD_15: 'VARCHAR',
+              CPT_PRCDR_CD_16: 'VARCHAR',
+              CPT_PRCDR_CD_17: 'VARCHAR',
+              CPT_PRCDR_CD_18: 'VARCHAR',
+              CPT_PRCDR_CD_19: 'VARCHAR',
+              CPT_PRCDR_CD_20: 'VARCHAR',
+              CPT_PRCDR_CD_21: 'VARCHAR',
+              CPT_PRCDR_CD_22: 'VARCHAR',
+              CPT_PRCDR_CD_23: 'VARCHAR',
+              CPT_PRCDR_CD_24: 'VARCHAR',
+              CPT_PRCDR_CD_25: 'VARCHAR',
+              CPT_PRCDR_CD_26: 'VARCHAR',
+              CPT_PRCDR_CD_27: 'VARCHAR',
+              CPT_PRCDR_CD_28: 'VARCHAR',
+              CPT_PRCDR_CD_29: 'VARCHAR',
+              CPT_PRCDR_CD_30: 'VARCHAR',
+              CPT_PRCDR_CD_31: 'VARCHAR',
+              CPT_PRCDR_CD_32: 'VARCHAR',
+              CPT_PRCDR_CD_33: 'VARCHAR',
+              CPT_PRCDR_CD_34: 'VARCHAR',
+              CPT_PRCDR_CD_35: 'VARCHAR',
+              PLAN_PMT_AMT: 'FLOAT',
+              TOT_CHRG_AMT: 'FLOAT'
+            })
+          formatter: oldstyle
+      - name: person
+        description: Person-Level files from AHRQ.
+        meta:
+          external_location: >
+            read_csv('../data/syh_dr/syhdr_*_person_2016.csv',
+            types = {
+              PERSON_ID: 'UBIGINT',
+              MCAID_BENE_ID: 'UBIGINT',
+              PERSON_WGHT: 'NUMERIC',
+              AGE_LOW: 'NUMERIC',
+              AGE_HIGH: 'NUMERIC',
+              SEX_IDENT_CD: 'VARCHAR',
+              RACE_CD: 'VARCHAR',
+              MCAID_SBMTTG_ST_CD: 'VARCHAR',
+              STATE_CD: 'VARCHAR',
+              COUNTY_FIPS_CD: 'VARCHAR',
+              ZIP_CD: 'VARCHAR',
+              RSN_ENRLMT_CD: 'VARCHAR',
+              MDCD_ENRLMT_1: 'NUMERIC',
+              MDCD_ENRLMT_2: 'NUMERIC',
+              MDCD_ENRLMT_3: 'NUMERIC',
+              MDCD_ENRLMT_4: 'NUMERIC',
+              MDCD_ENRLMT_5: 'NUMERIC',
+              MDCD_ENRLMT_6: 'NUMERIC',
+              MDCD_ENRLMT_7: 'NUMERIC',
+              MDCD_ENRLMT_8: 'NUMERIC',
+              MDCD_ENRLMT_9: 'NUMERIC',
+              MDCD_ENRLMT_10: 'NUMERIC',
+              MDCD_ENRLMT_11: 'NUMERIC',
+              MDCD_ENRLMT_12: 'NUMERIC',
+              MDCD_MCO_ENRLMT_1: 'NUMERIC',
+              MDCD_MCO_ENRLMT_2: 'NUMERIC',
+              MDCD_MCO_ENRLMT_3: 'NUMERIC',
+              MDCD_MCO_ENRLMT_4: 'NUMERIC',
+              MDCD_MCO_ENRLMT_5: 'NUMERIC',
+              MDCD_MCO_ENRLMT_6: 'NUMERIC',
+              MDCD_MCO_ENRLMT_7: 'NUMERIC',
+              MDCD_MCO_ENRLMT_8: 'NUMERIC',
+              MDCD_MCO_ENRLMT_9: 'NUMERIC',
+              MDCD_MCO_ENRLMT_10: 'NUMERIC',
+              MDCD_MCO_ENRLMT_11: 'NUMERIC',
+              MDCD_MCO_ENRLMT_12: 'NUMERIC',
+              MDCD_CHIP_ENRLMT: 'NUMERIC',
+              RSTCTD_BNFTS_IND: 'NUMERIC',
+              DUAL_ELGBL_1: 'NUMERIC',
+              DUAL_ELGBL_2: 'NUMERIC',
+              DUAL_ELGBL_3: 'NUMERIC',
+              DUAL_ELGBL_4: 'NUMERIC',
+              DUAL_ELGBL_5: 'NUMERIC',
+              DUAL_ELGBL_6: 'NUMERIC',
+              DUAL_ELGBL_7: 'NUMERIC',
+              DUAL_ELGBL_8: 'NUMERIC',
+              DUAL_ELGBL_9: 'NUMERIC',
+              DUAL_ELGBL_10: 'NUMERIC',
+              DUAL_ELGBL_11: 'NUMERIC',
+              DUAL_ELGBL_12: 'NUMERIC'
+            })
+          formatter: oldstyle
+      - name: pharmacy
+        descripton: Pharmacy files from AHRQ.
+        meta:
+          external_location: >
+            read_csv('../data/syh_dr/syhdr_*_pharmacy_2016.csv',
+            types = {
+              PERSON_ID: 'UBIGINT',
+              PERSON_WGHT: 'NUMERIC',
+              PHMCY_CLM_NUM: 'NUMERIC',
+              CLM_CNTL_NUM: 'NUMERIC',
+              LINE_NBR: 'VARCHAR',
+              FILL_DT: 'DATE',
+              SYNTHETIC_DRUG_ID: 'VARCHAR',
+              GENERIC_DRUG_NAME: 'VARCHAR',
+              PLAN_PMT_AMT: 'FLOAT',
+              TOT_CHRG_AMT: 'FLOAT'
+            })
+          formatter: oldstyle
+      - name: provider
+        description: Provider files from AHRQ.
+        meta:
+          external_location: >
+            read_csv('../data/syh_dr/syhdr_*_provider_2016.csv',
+            types = {
+              Facility_ID: 'VARCHAR',
+              Prvdr_Ctgry_Cd: 'VARCHAR',
+              Prvdr_Ownrshp_Cd: 'VARCHAR',
+              Prvdr_Prtcptn_Cd: 'VARCHAR'
+            })
+          formatter: oldstyle
+  - name: bls_gov
+    config:
+      plugin: excel
+    tables:
+      - name: consumer_price_index
+        meta:
+          external_location: ../data/r-cpi-u-rs-allitems.xlsx
+          sheet_nane: 'All items'
+  - name: mitre_org
+    tables:
+      - name: synthea
+        meta:
+          external_location: >
+            read_json('../data/Gudrun69_Shaunna800_Goyette777_d5e33bd1-960e-bcf4-e5f9-9a4afc6d5a5e.json',
+            columns = {
+              entry: 'JSON[]'
+            })
+          formatter: oldstyle
+  - name: social_determinants_of_health
+    description: "These files contain [version 1 of AHRQ’s database on Social Determinants of Health (SDOH)](https://www.ahrq.gov/sdoh/data-analytics/sdoh-data.html), which was created under a project funded by the Patient Centered Outcomes Research (PCOR) Trust Fund. The database is curated from existing Federal datasets and other publicly available data sources. The purpose of these files is to make it easier to find a range of well-documented, readily linkable SDOH variables across domains without having to access multiple source files, facilitating SDOH research and analysis. Variables in the files correspond to five key SDOH domains: social context, economic context, education, physical infrastructure, and healthcare context. The files can be linked to other data by geography. Data are available at the county, ZIP Code, and census tract levels."
+    config:
+      plugin: excel
+    tables:
+      - name: sdoh_zipcode_2011
+        description: Social Determinants of Health Zipcode data from 2011.
+        meta: 
+          external_location: ../data/SDOH/SDOH_2011_ZIPCODE_1_0.xlsx
+          sheet_name: Data
+      - name: sdoh_zipcode_2012
+        description: Social Determinants of Health Zipcode data from 2012.
+        meta: 
+          external_location: ../data/SDOH/SDOH_2012_ZIPCODE_1_0.xlsx
+          sheet_name: Data
+      - name: sdoh_zipcode_2013
+        description: Social Determinants of Health Zipcode data from 2013.
+        meta: 
+          external_location: ../data/SDOH/SDOH_2013_ZIPCODE_1_0.xlsx
+          sheet_name: Data
+      - name: sdoh_zipcode_2014
+        description: Social Determinants of Health Zipcode data from 2014.
+        meta: 
+          external_location: ../data/SDOH/SDOH_2014_ZIPCODE_1_0.xlsx
+          sheet_name: Data
+      - name: sdoh_zipcode_2015
+        description: Social Determinants of Health Zipcode data from 2015.
+        meta: 
+          external_location: ../data/SDOH/SDOH_2015_ZIPCODE_1_0.xlsx
+          sheet_name: Data
+      - name: sdoh_zipcode_2016
+        description: Social Determinants of Health Zipcode data from 2016.
+        meta: 
+          external_location: ../data/SDOH/SDOH_2016_ZIPCODE_1_0.xlsx
+          sheet_name: Data
+      - name: sdoh_zipcode_2017
+        description: Social Determinants of Health Zipcode data from 2017.
+        meta: 
+          external_location: ../data/SDOH/SDOH_2017_ZIPCODE_1_0.xlsx
+          sheet_name: Data
+      - name: sdoh_zipcode_2018
+        description: Social Determinants of Health Zipcode data from 2018.
+        meta: 
+          external_location: ../data/SDOH/SDOH_2018_ZIPCODE_1_0.xlsx
+          sheet_name: Data
+      - name: sdoh_zipcode_2019
+        description: Social Determinants of Health Zipcode data from 2019.
+        meta: 
+          external_location: ../data/SDOH/SDOH_2019_ZIPCODE_1_0.xlsx
+          sheet_name: Data
+      - name: sdoh_zipcode_2020
+        description: Social Determinants of Health Zipcode data from 2020.
+        meta: 
+          external_location: ../data/SDOH/SDOH_2020_ZIPCODE_1_0.xlsx
+          sheet_name: Data
+      - name: sdoh_county_2009
+        description: Social Determinants of Health County data from 2009.
+        meta:
+          external_location: ../data/SDOH/SDOH_2009_COUNTY_1_0.xlsx
+          sheet_name: Data
+      - name: sdoh_county_2010
+        description: Social Determinants of Health County data from 2010.
+        meta:
+          external_location: ../data/SDOH/SDOH_2010_COUNTY_1_0.xlsx
+          sheet_name: Data
+      - name: sdoh_county_2011
+        description: Social Determinants of Health County data from 2011.
+        meta:
+          external_location: ../data/SDOH/SDOH_2011_COUNTY_1_0.xlsx
+          sheet_name: Data
+      - name: sdoh_county_2012
+        description: Social Determinants of Health County data from 2012.
+        meta:
+          external_location: ../data/SDOH/SDOH_2012_COUNTY_1_0.xlsx
+          sheet_name: Data
+      - name: sdoh_county_2013
+        description: Social Determinants of Health County data from 2013.
+        meta:
+          external_location: ../data/SDOH/SDOH_2013_COUNTY_1_0.xlsx
+          sheet_name: Data
+      - name: sdoh_county_2014
+        description: Social Determinants of Health County data from 2014.
+        meta:
+          external_location: ../data/SDOH/SDOH_2014_COUNTY_1_0.xlsx
+          sheet_name: Data
+      - name: sdoh_county_2015
+        description: Social Determinants of Health County data from 2015.
+        meta:
+          external_location: ../data/SDOH/SDOH_2015_COUNTY_1_0.xlsx
+          sheet_name: Data
+      - name: sdoh_county_2016
+        description: Social Determinants of Health County data from 2016.
+        meta:
+          external_location: ../data/SDOH/SDOH_2016_COUNTY_1_0.xlsx
+          sheet_name: Data
+      - name: sdoh_county_2017
+        description: Social Determinants of Health County data from 2017.
+        meta:
+          external_location: ../data/SDOH/SDOH_2017_COUNTY_1_0.xlsx
+          sheet_name: Data
+      - name: sdoh_county_2018
+        description: Social Determinants of Health County data from 2018.
+        meta:
+          external_location: ../data/SDOH/SDOH_2018_COUNTY_1_1.xlsx
+          sheet_name: Data
+      - name: sdoh_county_2019
+        description: Social Determinants of Health County data from 2019.
+        meta:
+          external_location: ../data/SDOH/SDOH_2019_COUNTY_1_0.xlsx
+          sheet_name: Data
+      - name: sdoh_county_2020
+        description: Social Determinants of Health County data from 2020.
+        meta:
+          external_location: ../data/SDOH/SDOH_2020_COUNTY_1_0.xlsx
+          sheet_name: Data
+      - name: sdoh_tract_2009
+        description: Social Determinants of Health tract data from 2009.
+        meta:
+          external_location: ../data/SDOH/sdoh_2009_tract_1_0.xlsx
+          sheet_name: Data
+      - name: sdoh_tract_2010
+        description: Social Determinants of Health tract data from 2010.
+        meta:
+          external_location: ../data/SDOH/sdoh_2010_tract_1_0.xlsx
+          sheet_name: Data
+      - name: sdoh_tract_2011
+        description: Social Determinants of Health tract data from 2011.
+        meta:
+          external_location: ../data/SDOH/sdoh_2011_tract_1_0.xlsx
+          sheet_name: Data
+      - name: sdoh_tract_2012
+        description: Social Determinants of Health tract data from 2012.
+        meta:
+          external_location: ../data/SDOH/sdoh_2012_tract_1_0.xlsx
+          sheet_name: Data
+      - name: sdoh_tract_2013
+        description: Social Determinants of Health tract data from 2013.
+        meta:
+          external_location: ../data/SDOH/sdoh_2013_tract_1_0.xlsx
+          sheet_name: Data
+      - name: sdoh_tract_2014
+        description: Social Determinants of Health tract data from 2014.
+        meta:
+          external_location: ../data/SDOH/sdoh_2014_tract_1_0.xlsx
+          sheet_name: Data
+      - name: sdoh_tract_2015
+        description: Social Determinants of Health tract data from 2015.
+        meta:
+          external_location: ../data/SDOH/sdoh_2015_tract_1_0.xlsx
+          sheet_name: Data
+      - name: sdoh_tract_2016
+        description: Social Determinants of Health tract data from 2016.
+        meta:
+          external_location: ../data/SDOH/sdoh_2016_tract_1_0.xlsx
+          sheet_name: Data
+      - name: sdoh_tract_2017
+        description: Social Determinants of Health tract data from 2017.
+        meta:
+          external_location: ../data/SDOH/sdoh_2017_tract_1_0.xlsx
+          sheet_name: Data
+      - name: sdoh_tract_2018
+        description: Social Determinants of Health tract data from 2018.
+        meta:
+          external_location: ../data/SDOH/sdoh_2018_tract_1_0.xlsx
+          sheet_name: Data
+      - name: sdoh_tract_2019
+        description: Social Determinants of Health tract data from 2019.
+        meta:
+          external_location: ../data/SDOH/sdoh_2019_tract_1_0.xlsx
+          sheet_name: Data
+      - name: sdoh_tract_2020
+        description: Social Determinants of Health tract data from 2020.
+        meta:
+          external_location: ../data/SDOH/sdoh_2020_tract_1_0.xlsx
+          sheet_name: Data

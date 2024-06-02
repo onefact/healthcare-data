@@ -1,0 +1,9 @@
+healthcare_data:
+
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      threads: 1
+      plugins:
+        - module: excel
