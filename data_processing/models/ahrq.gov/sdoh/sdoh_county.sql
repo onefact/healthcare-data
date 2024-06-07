@@ -1,6 +1,6 @@
 {{ config(
         materialized = 'external',
-        location = '../data/sdoh_county.parquet'
+        location = 's3://payless.health/sdoh_county.parquet'
     )
 }}
 
