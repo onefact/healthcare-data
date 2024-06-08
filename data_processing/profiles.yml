@@ -4,12 +4,6 @@ healthcare_data:
   outputs:
     dev:
       type: duckdb
-      threads: 3
-      temp_directory: '/.tmp'
+      threads: 1
       plugins:
         - module: excel
-      extensions:
-        - httpfs
-        - parquet
-        - aws
-      use_credential_provider: aws
