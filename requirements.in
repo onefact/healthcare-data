@@ -14,3 +14,4 @@ duckdb-engine
 pdfplumber
 openpyxl
 pip-tools
+boto3
