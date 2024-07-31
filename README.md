@@ -1,3 +1,12 @@
+# Setting up environment
+```bash
+brew install uv
+uv pip compile requirements.in -o requirements.txt
+python3 -m venv .venv
+source .venv/bin/activate # or for fish: source .venv/bin/activate.fish
+pip install -r requirements.txt
+```
+
 # Synthetic Healthcare Data
 
 ## README from Observable Framework default documentation
@@ -61,7 +70,7 @@ A typical Framework project looks like this:
 Clone the repo, then run:
 Set up environment:
 ```bash
-python3 -m venv .venv 
+python3 -m venv .venv
 ```
 
 Activate the environment:
@@ -83,7 +92,7 @@ pip install pip-tools
 
 Compile dependencies:
 ```bash
-pip-compile 
+pip-compile
 ```
 
 Initializing a dbt project:
@@ -162,4 +171,4 @@ Check the total payment amount:
 
 # Contact
 
-File an issue here or email `hello@onefact.org`. 
+File an issue here or email `hello@onefact.org`.
